@@ -16,4 +16,5 @@ A Versão 1, que é este no repositório verifica a eficácia da linguagem utili
 
 É com o uso e avaliação desta versão que será avaliado os pontos de melhorias e as correções de rota para que o objetivo final seja alcançado: um formulário que consiga resolver o problema do usuário e interaja com ele, sem a necessidade de que ele se sinta desanimado por preencher um formulário. 
 
-#Banco
+<b>Banco</b>
+O Banco de dados pode ser facilmente gerado executando o arquivo Node.js que faz a postagemd o banco. 
