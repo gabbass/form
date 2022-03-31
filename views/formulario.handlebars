@@ -1,0 +1,177 @@
+	<div class="container-xl">
+	<form id="regform" action="/add" method="POST">
+		<!--Nome-->
+		<div class="tab">
+          <img src="public/img/bemvindo.png" alt="Boas vindas!" class="imagem_info">
+          <center><h1>Olá! Como vai?</h1></center>
+          <h3>Estamos aqui para te ajudar! Sabemos que é algo diferente, mas você agora está no lugar certo!
+              <br>Vamos coletar informações te ajudar! Vamos começar?
+          </h3>
+            <div class="container-fluid">
+              <hr>
+              <label><h4>Digita para mim, ai em baixo, como você gostaria de ser chamado(a)?</h4></label>
+              <input type="text" class="form-control" name="nome">
+              <br>
+              <div class="alert alert-success" role="alert"><B>Diigitou? Ótimo! Clique no BOTÃO VERDE, chamado "Próximo", para continuarmos</B>
+              </div>
+          </div>
+		</div>
+
+		<!--E-mail-->
+		<div class="tab">
+            <img src="public/img/email.png" alt="E-mail" class="imagem_info">
+            <h2>Vamos continuar!?</h2>
+            <h3>Agora precisamos do seu e-mail, para entramos em contato.</h3>
+            <div class="alert alert-warning" role="alert">
+            <b>É importante que seja um e-mail que você tenha acesso, se possível de alguém que acessa o e-mail.</b>
+            </div>
+		  	<div class="container-fluid">
+          <label><h4>Digita em baixo, o seu email, tudo bem?</h4></label>
+          <input type="email" class="form-control" name="email">
+          <br>
+          <div class="alert alert-success" role="alert"><B>Escreveu, certinho? clique mais uma vez no BOTÃO VERDE, chamado "Próximo", para continuarmos</B>
+          </div>
+			  </div>
+        <div class="alert alert-dark" role="alert">
+              <b>Lembrando</b>: Sempre que precisar, <b>Clique NO BOTÃO CINZA</b> escrito <b>"Anterior"</b>, a qualquer momento, para volta ao estágio anterior. 
+               </div>
+		</div>
+
+		<!--Telefone-->
+		<div class="tab">
+            <img src="public/img/telefone.png" alt="Telefone" class="imagem_info">
+            <h2>Falta pouco!</h2>
+            <h3>Agora precisamos do seu número de celular com DDD (Por exemplo, se é da cidade de São Paulo é 11 + o seu número), para ficarmos mais próximos possíveis!</h3>
+            <div class="alert alert-warning" role="alert">
+            <b>Se for um telefone que tenha Whatsapp, seria de grande ajuda para nossa equipe!</b>
+            </div>
+           <div class="container-fluid">
+              <label><h4>Digite para nós, qual o seu celular?</h4></label>
+              <input type="text" class="form-control" name="telefone">
+              <br>
+              <div class="alert alert-success" role="alert"><B>Estamos quase lá! Clique no BOTÃO VERDE, chamado "Próximo", para irmos para a última etapa!</B>
+              </div>
+           </div>
+              <div class="alert alert-dark" role="alert">
+              <b>Lembrando</b>: Sempre que precisar, <b>Clique NO BOTÃO CINZA</b> escrito <b>"Anterior"</b>, a qualquer momento, para volta ao estágio anterior. 
+               </div>
+		</div>
+
+    <!--Problema-->
+    <div class="tab">
+            <img src="public/img/relato.png" alt="Telefone" class="imagem_info">
+            <h2>Agora, nos conte o que podemos te ajudar!</h2>
+            <h3>Escreva livremente na caixa de texto, nossa equipe terá satisfação em ler para entender como podemos te auxiliar!</h3>
+            <div class="alert alert-warning" role="alert"> 
+            <b>Quanto mais detalhes você nos oferecer, melhor entenderemos você!</b>
+            </div>
+
+            <div class="container-fluid">
+              <label><h4>Escreva pra nós, o que podemos te ajudar?</h4></label>
+              <textarea class="form-control rounded-0" class="form-control" name="problema" rows="10"></textarea>
+              <br>
+              <div class="alert alert-success" role="alert"><B>Agora é só calicar no BOTÃO VERDE, chamado "Enviar", pela última vez, para concluirmos!</B>
+                  </div>
+            </div>
+              <div class="alert alert-dark" role="alert">
+              <b>Lembrando</b>: Sempre que precisar, <b>Clique NO BOTÃO CINZA</b> escrito <b>"Anterior"</b>, a qualquer momento, para volta ao estágio anterior. 
+               </div>
+            <!--<button type="submit" class="btn btn-primary">Enviar</button>-->
+		</div>
+
+
+<!-- Adaptado de: https://www.w3schools.com/howto/howto_js_form_steps.asp -->
+		<div style="overflow:auto;">
+  			<div style="float:right;">
+				<button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+				<button type="button" id="nextBtn" onclick="nextPrev(1)">Próximo</button>
+        <!--<button type="submit" id="nextBtn"  onclick="nextPrev(0)">Enviar</button>-->
+			</div>
+		</div>
+		<div style="text-align:center;margin-top:40px;">
+  		<span class="step"></span>
+  		<span class="step"></span>
+  		<span class="step"></span>
+  		<span class="step"></span>
+		</div>
+	</form>
+</div>
+<!-- Adaptado de: https://www.w3schools.com/howto/howto_js_form_steps.asp -->
+<script>
+var currentTab = 0; // Prinmeira aba é zero
+showTab(currentTab); // Mostra a primeira aba
+
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    var botao = "<button type='submit' id='nextBtn'>Enviar</button>";
+      document.getElementById("nextBtn").innerHTML = botao;
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Próximo";
+  }
+  // ... and run a function that displays the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    console.log("Enviou")
+    //document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false:
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  x[n].className += " active";
+}
+
+</script>
+	
